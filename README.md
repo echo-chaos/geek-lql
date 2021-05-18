@@ -7,8 +7,8 @@
 4. jvm内存.md
 
 ### geek-nio
-> GCLogAnalysis.md
-> GCLogAnalysis执行.md
-> HttpClientUtil.java
-> OkHttpUtil.java
-> gateway-server-demo.md
+>1. GCLogAnalysis.md
+>2. GCLogAnalysis执行.md
+>3. HttpClientUtil.java
+>4. OkHttpUtil.java
+>5. gateway-server-demo.md
