@@ -20,3 +20,10 @@
 >3. outbound
 >4. router
 >5. servers
+
+### gateway演进
+>1. gateway1.0：示例代码 + Httpclient/OkHttp
+>2. gataway2.0：示例代码 + 过滤器 + Httpclient/OkHttp
+>3. gateway3.0：示例代码 + 过滤器 + 路由 + Httpclient/OkHttp
+> 过滤器：请求过滤   响应过滤
+> 路由：路由业务分发
