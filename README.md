@@ -15,8 +15,8 @@
 
 ### geek-netty
 >> src/main/java/org/lql/netty/
->> filter
->> inbound
->> outbound
->> router
->> servers
+>1. filter
+>2. inbound
+>3. outbound
+>4. router
+>5. servers
