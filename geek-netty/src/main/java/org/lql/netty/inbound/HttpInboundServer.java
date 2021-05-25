@@ -1,5 +1,6 @@
 package org.lql.netty.inbound;
 
+import com.oracle.webservices.internal.api.databinding.DatabindingMode;
 import io.netty.bootstrap.ServerBootstrap;
 import io.netty.buffer.PooledByteBufAllocator;
 import io.netty.channel.Channel;
@@ -16,7 +17,7 @@ import java.util.List;
 
 /**
  * @author: lql
- * @date: 2021/5/23 23:20
+ * @date: 2021/5/25 14:03
  * @description: Http Inbound Server
  */
 @Data
@@ -31,13 +32,9 @@ public class HttpInboundServer {
         this.proxyServers = proxyServers;
     }
 
-    public void run() throws Exception {
-        /*
-         * 主从事件工作组
-         */
+    public void run() throws InterruptedException {
         EventLoopGroup bossGroup = new NioEventLoopGroup(1);
         EventLoopGroup workerGroup = new NioEventLoopGroup(16);
-
         try {
             ServerBootstrap b = new ServerBootstrap();
             b.option(ChannelOption.SO_BACKLOG, 128)
@@ -49,7 +46,6 @@ public class HttpInboundServer {
                     .childOption(EpollChannelOption.SO_REUSEPORT, true)
                     .childOption(ChannelOption.SO_KEEPALIVE, true)
                     .childOption(ChannelOption.ALLOCATOR, PooledByteBufAllocator.DEFAULT);
-
             b.group(bossGroup, workerGroup).channel(NioServerSocketChannel.class)
                     .handler(new LoggingHandler(LogLevel.DEBUG))
                     .childHandler(new HttpInboundInitializer(this.proxyServers));
@@ -62,5 +58,4 @@ public class HttpInboundServer {
             workerGroup.shutdownGracefully();
         }
     }
-
 }
