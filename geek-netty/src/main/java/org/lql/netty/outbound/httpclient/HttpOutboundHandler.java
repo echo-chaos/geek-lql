@@ -22,6 +22,7 @@ import org.lql.netty.filter.HttpRequestFilter;
 import org.lql.netty.filter.HttpResponseFilter;
 import org.lql.netty.router.HttpEndpointRouter;
 import org.lql.netty.router.RandomHttpEndpointRouter;
+import org.lql.netty.router.WeightHttpEndpointRouter;
 
 import java.util.Arrays;
 import java.util.List;
@@ -44,7 +45,7 @@ public class HttpOutboundHandler {
     private List<String> backendUrls;
 
     private HttpResponseFilter filter = new HeaderHttpResponseFilter();
-    private HttpEndpointRouter router = new RandomHttpEndpointRouter();
+    private HttpEndpointRouter router = new WeightHttpEndpointRouter();
 
     public HttpOutboundHandler(List<String> backends) {
         this.backendUrls = backends.stream().map(this::formatUrl).collect(Collectors.toList());
