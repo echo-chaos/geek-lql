@@ -21,9 +21,9 @@
 >4. router
 >5. servers
 >> works
-1. BackendServer.java
-2. ProxyBizFilter.java
-3. WeightHttpEndpointRouter.java
+> 1. BackendServer.java
+> 2. ProxyBizFilter.java
+> 3. WeightHttpEndpointRouter.java
 
 ### gateway演进
 >1. gateway1.0：示例代码 + Httpclient/OkHttp
